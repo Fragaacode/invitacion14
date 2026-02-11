@@ -7,8 +7,9 @@ import {useRoute} from "vue-router";
 
 const confetti = new Confetti({});
 
-const paramNames = useRoute().params.names;
-const title = ref(`${paramNames}, ¿Queres salir conmigo el 14? 💖`);
+const route = useRoute();
+const paramNames = route.params.names ?? "Juana";
+const title = ref(`${paramNames}, ¿Querés salir conmigo el 14? 💖`);
 const actualGif = ref(GIFS[0]);
 
 const isYesButtonClicked = ref(false);
@@ -51,9 +52,9 @@ const onYesButtonClick = () => {
 
 <template>
   <section class="p-8 w-full h-full min-h-dvh items-center justify-center flex flex-col gap-0 md:p-16 md:gap-8">
-    <h1 class="text-center font-bold text-[clamp(26px,5vw,42px)] max-w-2xl">
-      {{title}}
-    </h1>
+    <h1 class="text-center font-bold text-[clamp(26px,5vw,42px)] max-w-2xl text-white drop-shadow-lg">
+  {{ title }}
+</h1>
     <div class="h-[400px] flex justify-center items-center">
       <img
           :src="actualGif.img"
